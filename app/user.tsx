@@ -1,5 +1,6 @@
 import { Button } from '@/components/ui/button';
 import { auth, signIn, signOut } from '@/lib/auth';
+import { googleSignIn } from '@/lib/gauth';
 import Image from 'next/image';
 
 export async function User() {
@@ -11,7 +12,8 @@ export async function User() {
       <form
         action={async () => {
           'use server';
-          await signIn('github');
+          // await signIn('github');
+          await googleSignIn();
         }}
       >
         <Button variant="outline">Sign In</Button>
