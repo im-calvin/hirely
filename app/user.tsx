@@ -1,7 +1,7 @@
 import { Button } from '@/components/ui/button';
 import { auth, signIn, signOut } from '@/lib/auth';
-import { googleSignIn } from '@/lib/gauth';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export async function User() {
   const session = await auth();
@@ -9,15 +9,9 @@ export async function User() {
 
   if (!user) {
     return (
-      <form
-        action={async () => {
-          'use server';
-          // await signIn('github');
-          await googleSignIn();
-        }}
-      >
+      <Link href="/api/auth" target="_blank">
         <Button variant="outline">Sign In</Button>
-      </form>
+      </Link>
     );
   }
 
